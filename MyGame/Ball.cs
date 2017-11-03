@@ -7,45 +7,42 @@ using System.Threading.Tasks;
 
 namespace MyGame
 {
-    class Ball
+    class Ball : GameObject
     {
-        public int X { get; set; }
-        public int Y { get; set; }
-        public int VelX { get; set; }
-        public int VelY { get; set; }
+        
         public int Radius { get; set; }
         public int Diameter
         {
             get
             {
-                return (int)Math.Sqrt(Math.Pow(X, 2) + Math.Pow(Y, 2));
+                return Radius * 2;
             }
         }
 
-        public Ball(int x, int y, int radius)
+        public Ball(int x, int y, int radius) : base()
         {
-            X = x;
-            Y = y;
+            Position.X = x;
+            Position.Y = y;
             Radius = radius;
-            VelX = 5;
-            VelY = 5;
+            Velocity.X = 5;
+            Velocity.Y = 5;
         }
 
-        public void Update(int width, int height)
+        public override void Draw(Graphics g)
         {
-            if (X > width | X < 0)
-                VelX *= -1;
-
-            if (Y > height | Y < 0)
-                VelY *= -1;
-
-            X += VelX;
-            Y += VelY;
+            g.DrawEllipse(Pens.Black, Position.X, Position.Y, Diameter, Diameter);
         }
 
-        public void Draw(Graphics g)
+        public override void Update()
         {
-            g.DrawEllipse(Pens.Black, X, Y, Diameter, Diameter);
+            if (Position.X + Diameter > GameWorld.CONTAINER_WIDTH | Position.X < 0)
+                Velocity.X *= -1;
+
+            if (Position.Y + Diameter > GameWorld.CONTAINER_HEIGHT | Position.Y < 0)
+                Velocity.Y *= -1;
+
+            Position.X += Velocity.X;
+            Position.Y += Velocity.Y;
         }
     }
 }

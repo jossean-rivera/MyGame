@@ -54,14 +54,18 @@ namespace MyGame
 
         private void GameLoop()
         {
+            InitializeGame();
             while (!GameOver)
             {
                 double start = GetCurrentTime();
                 //processInput();
-                //update();
-                //render();
-                
-                Thread.Sleep((int)(start + MS_PER_FRAME - GetCurrentTime()));
+                GameWorld.Instance.Update();
+                GameRender();
+
+                int wait = (int)(start + MS_PER_FRAME - GetCurrentTime());
+                if(wait > 0)
+                    Thread.Sleep(wait);
+                //Display the rate of frames per seconds to the console
                 Console.WriteLine("FPS: [{0}]", Math.Round(1000 / (GetCurrentTime() - start), 1));
             }
             Console.WriteLine("Game Over");
@@ -70,6 +74,27 @@ namespace MyGame
         private long GetCurrentTime()
         {
             return DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
+        }
+
+        private void InitializeGame()
+        {
+            Ball ball = new Ball(Map.Width / 2, Map.Height / 2, 5);
+
+            GameWorld.Instance.AddObject(ball);
+        }
+
+        private void GameRender()
+        {
+            using(Graphics g = Graphics.FromImage(Map))
+            {
+                g.Clear(Color.White);
+                foreach (GameObject obj in GameWorld.Instance.Objects)
+                    obj.Draw(g);
+                this.Invoke(new MethodInvoker(() =>
+                {
+                    ContainerBox.Refresh();
+                }));
+            }
         }
     }
 }
