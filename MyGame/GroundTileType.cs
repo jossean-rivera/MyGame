@@ -19,10 +19,10 @@ namespace MyGame
         Under_BottomEnd,
         Under_NoEnd3,
         Top_CurvedLeft,
-        Under_RightBottomEnd,
+        Under_BottomLeftEnd,
         Air_LeftEnd,
         Air_NoEnd,
         Air_RightEnd,
-        Under_BottomLeftEnd
+        Under_BottomRightEnd
     }
 }
