@@ -50,14 +50,14 @@
             this.btnStartStop.Text = "Start";
             this.btnStartStop.UseVisualStyleBackColor = true;
             // 
-            // Form1
+            // GameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.Controls.Add(this.btnStartStop);
             this.Controls.Add(this.ContainerBox);
-            this.Name = "Form1";
+            this.Name = "GameForm";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.ContainerBox)).EndInit();
             this.ResumeLayout(false);
