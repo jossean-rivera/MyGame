@@ -56,6 +56,7 @@
     <Compile Include="GameWorld.cs" />
     <Compile Include="GroundTile.cs" />
     <Compile Include="GroundTileType.cs" />
+    <Compile Include="Hero.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tiles.cs" />
@@ -87,6 +88,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="heroartset\hero_stand_left.png" />
     <Content Include="tileset\bg\BG.png" />
     <Content Include="tileset\objects\Bush %281%29.png" />
     <Content Include="tileset\objects\Bush %282%29.png" />
