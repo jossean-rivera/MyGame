@@ -35,10 +35,10 @@ namespace MyGame
 
         public override void Update()
         {
-            if (Position.X + Diameter > GameWorld.CONTAINER_WIDTH | Position.X < 0)
+            if (Position.X + Diameter > GameWorld.CONTAINER_WIDTH & Velocity.X > 0 | Position.X < 0 & Velocity.X < 0)
                 Velocity.X *= -1;
 
-            if (Position.Y + Diameter > GameWorld.CONTAINER_HEIGHT | Position.Y < 0)
+            if (Position.Y + Diameter > GameWorld.CONTAINER_HEIGHT & Velocity.Y > 0 | Position.Y < 0 & Velocity.Y < 0)
                 Velocity.Y *= -1;
 
             Position.X += Velocity.X;

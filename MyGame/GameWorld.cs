@@ -39,5 +39,25 @@ namespace MyGame
 
         public const int CONTAINER_WIDTH = 259;
         public const int CONTAINER_HEIGHT = 207;
+
+        private Tile[,] _tiles = new Tile[10, 10];
+        public Tile[,] Tiles
+        {
+            get
+            {
+                return _tiles;
+            }
+        }
+
+        public void AddTile(Tile tile, int x, int y)
+        {
+            if (x > 10 | x < 0)
+                throw new ArgumentException("X has to be between 0 and 10", "x");
+
+            if (y > 10 | y < 0)
+                throw new ArgumentException("Y has to be between 0 and 10", "y");
+
+            _tiles[x, y] = tile;
+        }
     }
 }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Windows.Forms;
+using System.IO;
 
 namespace MyGame
 {
@@ -16,6 +17,7 @@ namespace MyGame
         private bool GameOver;
         private Bitmap Map;
         private const double MS_PER_FRAME = 1000 / 30;
+        private string BGDirectory;
 
         public GameForm()
         {
@@ -42,13 +44,14 @@ namespace MyGame
                 btnStartStop.Text = "Stop";
                 GameOver = false;
 
-                Task TaskGameLoop = Task.Factory.StartNew(GameLoop);
+                Task.Factory.StartNew(GameLoop);
             }
             else
             {
                 btnStartStop.Text = "Stopped";
                 btnStartStop.Enabled = false;
                 GameOver = true;
+                this.Close();
             }
         }
 
@@ -65,6 +68,7 @@ namespace MyGame
                 int wait = (int)(start + MS_PER_FRAME - GetCurrentTime());
                 if(wait > 0)
                     Thread.Sleep(wait);
+
                 //Display the rate of frames per seconds to the console
                 Console.WriteLine("FPS: [{0}]", Math.Round(1000 / (GetCurrentTime() - start), 1));
             }
@@ -78,22 +82,64 @@ namespace MyGame
 
         private void InitializeGame()
         {
-            Ball ball = new Ball(Map.Width / 2, Map.Height / 2, 5);
+            Random rnd = new Random();
+            Ball ball;
+            for (int i = 0; i < 100; i++)
+            {
+                ball = new Ball(rnd.Next(Map.Width), rnd.Next(Map.Height), rnd.Next(20) + 5);
+                GameWorld.Instance.AddObject(ball);
+            }
 
-            GameWorld.Instance.AddObject(ball);
+            GroundTile tile_Under_BottomLeftEnd = new GroundTile(GameWorld.CONTAINER_WIDTH / 10, GameWorld.CONTAINER_HEIGHT / 10, TileType.Under_Ground, GroundTileType.Under_BottomLeftEnd);
+            GameWorld.Instance.AddTile(tile_Under_BottomLeftEnd, 0, 9);
+
+            GroundTile tile_Under_BottomEnd = new GroundTile(GameWorld.CONTAINER_WIDTH / 10, GameWorld.CONTAINER_HEIGHT / 10, TileType.Under_Ground, GroundTileType.Under_BottomEnd);
+            for(int i = 1; i <= 8; i++)
+                GameWorld.Instance.AddTile(tile_Under_BottomEnd, i, 9);
+
+            GroundTile tile_Under_BottonRightEnd = new GroundTile(GameWorld.CONTAINER_WIDTH / 10, GameWorld.CONTAINER_HEIGHT / 10, TileType.Under_Ground, GroundTileType.Under_RightBottomEnd);
+            GameWorld.Instance.AddTile(tile_Under_BottonRightEnd, 9, 9);
         }
 
         private void GameRender()
         {
             using(Graphics g = Graphics.FromImage(Map))
             {
-                g.Clear(Color.White);
+                #region Draw Background
+                BGDirectory = Path.Combine(Environment.CurrentDirectory, @"tileset\bg\BG.png");
+
+                if (BGDirectory.Contains("bin\\Debug\\"))
+                    BGDirectory = BGDirectory.Replace("bin\\Debug\\", string.Empty);
+
+                g.DrawImage(Image.FromFile(BGDirectory), 0, 0, GameWorld.CONTAINER_WIDTH, GameWorld.CONTAINER_HEIGHT);
+                #endregion
+
+                #region Draw Tiles
+                for (int row = 0; row < 10; row++)
+                    for (int col = 0; col < 10; col++)
+                        if(GameWorld.Instance.Tiles[row, col] != null)
+                            GameWorld.Instance.Tiles[row, col].Draw(g, row, col);
+                #endregion
+
+                #region Draw Objects
                 foreach (GameObject obj in GameWorld.Instance.Objects)
                     obj.Draw(g);
-                this.Invoke(new MethodInvoker(() =>
+                #endregion
+
+                #region Refresh Container
+                try
                 {
-                    ContainerBox.Refresh();
-                }));
+                    this.Invoke(new MethodInvoker(() =>
+                    {
+                        ContainerBox.Refresh();
+
+                    }));
+                }
+                catch (ObjectDisposedException ex)
+                {
+                    Console.WriteLine("Exception: " + ex.Message);
+                }
+                #endregion
             }
         }
     }

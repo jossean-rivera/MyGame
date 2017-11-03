@@ -20,5 +20,7 @@ namespace MyGame
             Height = height;
             Type = type;
         }
+
+        public abstract void Draw(Graphics g, int x, int y);
     }
 }
