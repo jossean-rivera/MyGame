@@ -11,12 +11,17 @@ namespace MyGame
     public class Hero : GameObject
     {
         public Image Image { get; set; }
+        public int Width { get; set; }
+        public int Height { get; set; }
 
-        public Hero(int x, int y)
+        public Hero(int x, int y, int width, int height)
         {
             Position = new Vector();
             Position.X = x;
             Position.Y = y;
+
+            Width = width;
+            Height = height;
 
             string path = Environment.CurrentDirectory;
             if (path.Contains("\\bin\\Debug"))
@@ -32,7 +37,8 @@ namespace MyGame
 
         public override void Draw(Graphics g)
         {
-            g.DrawImage(Image, new Point(Position.X - Image.Width / 2, Position.Y - Image.Height / 2));
+            g.DrawImage(Image, Position.X, Position.Y, Width, Height);
+            //g.DrawRectangle(Pens.Red, Position.X , Position.Y , Width, Height);
         }
     }
 }

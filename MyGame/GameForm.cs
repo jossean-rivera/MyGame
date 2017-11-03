@@ -116,6 +116,11 @@ namespace MyGame
             GroundTile tile_Top_RightEnd = new GroundTile(width, height, TileType.Under_Ground, GroundTileType.Top_RightEnd);
             GameWorld.Instance.AddTile(tile_Top_RightEnd, 9, 8);
             #endregion
+
+            #region Create hero instance
+            Hero hero = new Hero(width * 4, height * 6, width, height * 2);
+            GameWorld.Instance.AddObject(hero);
+            #endregion
         }
 
         private void GameRender()
