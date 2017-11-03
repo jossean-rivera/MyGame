@@ -24,8 +24,8 @@ namespace MyGame
             Position.X = x;
             Position.Y = y;
             Radius = radius;
-            Velocity.X = 5;
-            Velocity.Y = 5;
+            Velocity.X = 1;
+            Velocity.Y = 1;
         }
 
         public override void Draw(Graphics g)
