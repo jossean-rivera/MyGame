@@ -37,8 +37,10 @@ namespace MyGame
                 obj.Update();
         }
 
-        public const int CONTAINER_WIDTH = 259;
-        public const int CONTAINER_HEIGHT = 207;
+        //public const int CONTAINER_WIDTH = 259 + 1;
+        //public const int CONTAINER_HEIGHT = 207 + 3;
+        public const int CONTAINER_WIDTH = 500;
+        public const int CONTAINER_HEIGHT = 400;
 
         private Tile[,] _tiles = new Tile[10, 10];
         public Tile[,] Tiles

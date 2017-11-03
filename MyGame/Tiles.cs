@@ -21,6 +21,9 @@ namespace MyGame
             Type = type;
         }
 
-        public abstract void Draw(Graphics g, int x, int y);
+        public void Draw(Graphics g, int x, int y)
+        {
+            g.DrawImage(Image, x * Width, y * Height, Width, Height);
+        }
     }
 }

@@ -37,13 +37,13 @@
             // 
             this.ContainerBox.Location = new System.Drawing.Point(13, 13);
             this.ContainerBox.Name = "ContainerBox";
-            this.ContainerBox.Size = new System.Drawing.Size(259, 207);
+            this.ContainerBox.Size = new System.Drawing.Size(500, 400);
             this.ContainerBox.TabIndex = 0;
             this.ContainerBox.TabStop = false;
             // 
             // btnStartStop
             // 
-            this.btnStartStop.Location = new System.Drawing.Point(101, 226);
+            this.btnStartStop.Location = new System.Drawing.Point(213, 423);
             this.btnStartStop.Name = "btnStartStop";
             this.btnStartStop.Size = new System.Drawing.Size(75, 23);
             this.btnStartStop.TabIndex = 1;
@@ -55,11 +55,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(527, 458);
             this.Controls.Add(this.btnStartStop);
             this.Controls.Add(this.ContainerBox);
             this.Name = "GameForm";
-            this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.ContainerBox)).EndInit();
             this.ResumeLayout(false);
 

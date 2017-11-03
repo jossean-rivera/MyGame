@@ -22,9 +22,5 @@ namespace MyGame
             path = Path.Combine(path, "tileset\\tiles\\" + (int)groundtype + ".png");
             Image = Image.FromFile(path);
         }
-        public override void Draw(Graphics g, int x, int y)
-        {
-            g.DrawImage(Image, x * Width, y * Height, Width, Height);
-        }
     }
 }
