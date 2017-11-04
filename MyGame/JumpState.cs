@@ -11,9 +11,9 @@ namespace MyGame
     public class JumpState : HeroState
     {
         private Key _input;
-        private Hero _hero;
-        private const int vely = 5;
-        private const int velx = 5;
+        private Hero _hero; //We need the hero instance to be able to be at the draw method
+        private const int vely = 15;
+        private const int velx = 7;
         public override HeroState HandleInput(Hero h)
         {
             if (Keyboard.IsKeyDown(Key.Right))
@@ -36,22 +36,26 @@ namespace MyGame
             else if (_input == Key.Left)
                 hero.Position.X -= velx;
 
-            if(ImgNum < 5)
+            if(_framecount <= 10)
             {
                 //Go up
                 hero.Position.Y -= vely;
             }
-            else if (ImgNum <= 9)
+            else if (_framecount <= 20)
             {
                 hero.Position.Y += vely;
-                if (ImgNum == 9 & _delaycounter == ImgDelay) _hero = hero;
+                if (_framecount == 20 & _delaycounter == ImgDelay)
+                {
+                    _hero = hero;
+                    //hero.Position.Y -= vely;
+                }
             }
         }
 
         public override void Draw(Graphics g, int x, int y)
         {
             base.Draw(g, x, y);
-            if(ImgNum >= 9 & _delaycounter == ImgDelay)
+            if(_hero != null)
             {
                 _hero.State = new RunState(_hero, this.Direction);
                 _hero.State.Enter(_hero);
@@ -60,7 +64,8 @@ namespace MyGame
 
         public override void Enter(Hero hero)
         {
-            ImgNum = 0;
+            base.Enter(hero);
+            _hero = null;
         }
 
         public JumpState(Hero h, HeroDirection d) : base("Jump", h.Width, h.Height, d)

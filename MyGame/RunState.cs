@@ -5,8 +5,7 @@ namespace MyGame
 {
     public class RunState : HeroState
     {
-        //TEMP field
-        private const int vel = 5;
+        private const int vel = 7;
         public override HeroState HandleInput(Hero h)
         {
             switch (Direction)
