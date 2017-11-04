@@ -15,11 +15,12 @@ namespace MyGame
         public int ImgHeigh { get; set; }
         protected int _delaycounter;
         protected int _framecount;
+        protected int _frametotal = (ImgDelay + 1) * ImgsCount;
         public HeroDirection Direction { get; set; }
         private Image[] _images = new Image[ImgsCount];
 
         //How many frames until we move to the next img.
-        public int ImgDelay { get; set; }
+        public const int ImgDelay = 2;
         #endregion
 
         #region Methods
@@ -75,7 +76,6 @@ namespace MyGame
         public HeroState(string name, int heroWidth, int heroHeight, HeroDirection direction)
         {
             Name = name;
-            ImgDelay = 2;
             ImgWidth = heroWidth;
             ImgHeigh = heroHeight;
             Direction = direction;

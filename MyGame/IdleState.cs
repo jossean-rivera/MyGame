@@ -20,6 +20,9 @@ namespace MyGame
 
             else if (Keyboard.IsKeyDown(Key.A))
                 return new JumpState(h, this.Direction);
+            else if (Keyboard.IsKeyDown(Key.S))
+                return new AttackState(h, this.Direction);
+
 
             return null;
         }

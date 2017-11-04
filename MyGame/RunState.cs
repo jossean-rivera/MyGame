@@ -14,16 +14,28 @@ namespace MyGame
             {
                 case HeroDirection.Right:
                     if (Keyboard.IsKeyUp(Key.Right))
+                    {
+                        if (Keyboard.IsKeyDown(Key.Left))
+                            return new RunState(h, HeroDirection.Left);
+
                         return new IdleState(h, HeroDirection.Right);
+                    }
                     break;
                 case HeroDirection.Left:
                     if (Keyboard.IsKeyUp(Key.Left))
+                    {
+                        if (Keyboard.IsKeyDown(Key.Right))
+                            return new RunState(h, HeroDirection.Right);
+
                         return new IdleState(h, HeroDirection.Left);
+                    }
                     break;
             }
 
             if (Keyboard.IsKeyDown(Key.A))
                 return new JumpState(h, this.Direction);
+            else if (Keyboard.IsKeyDown(Key.S))
+                return new AttackState(h, this.Direction, 0.3);
 
             return null;
         }
@@ -54,11 +66,10 @@ namespace MyGame
 
         public override void Draw(Graphics g, int x, int y)
         {
-            base.Draw(g, x, y);
-            //g.DrawRectangle(Pens.Red, x, y, ImgWidth, ImgHeigh);
+            base.Draw(g, x, y + GameWorld.TILES_AMOUNT_Y * 1/3);
         }
 
-        public RunState(Hero h, HeroDirection d) : base("Run", h.Width, h.Height, d)
+        public RunState(Hero h, HeroDirection d) : base("Run", h.Width + GameWorld.TILES_WIDTH * 1/3, h.Height, d)
         {
 
         }

@@ -67,7 +67,7 @@ namespace MyGame
             //_hero = null;
         }
 
-        public JumpState(Hero h, HeroDirection d) : base("Jump", h.Width + GameWorld.TILES_WIDTH * 1/4, h.Height, d)
+        public JumpState(Hero h, HeroDirection d) : base("Jump", h.Width + GameWorld.TILES_WIDTH * 1/3, h.Height + GameWorld.TILES_HEIGHT * 1 / 8, d)
         {
             
         }
