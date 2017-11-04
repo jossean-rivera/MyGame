@@ -45,7 +45,11 @@ namespace MyGame
                 btnStartStop.Text = "Stop";
                 GameOver = false;
 
-                Task.Factory.StartNew(GameLoop);
+                //Task.Factory.StartNew(GameLoop);
+                Thread GameThread = new Thread(GameLoop);
+                GameThread.Name = "Game Thread";
+                GameThread.SetApartmentState(ApartmentState.STA);
+                GameThread.Start();
             }
             else
             {
@@ -59,14 +63,22 @@ namespace MyGame
         private void GameLoop()
         {
             InitializeGame();
+            double start;
+            int wait;
+            var query = from GameObject obj in GameWorld.Instance.Objects where obj.GetType().Name == "Hero" select obj;
+            Hero hero = null;
+            if (query != null)
+                hero = query.First() as Hero;
+
             while (!GameOver)
             {
-                double start = GetCurrentTime();
+                start = GetCurrentTime();
                 //processInput();
+                hero.HandleInput();
                 GameWorld.Instance.Update();
                 GameRender();
 
-                int wait = (int)(start + MS_PER_FRAME - GetCurrentTime());
+                wait = (int)(start + MS_PER_FRAME - GetCurrentTime());
                 if(wait > 0)
                     Thread.Sleep(wait);
 
@@ -84,13 +96,13 @@ namespace MyGame
         private void InitializeGame()
         {
             #region TEMP Generate Ball instances
-            Random rnd = new Random();
-            Ball ball;
-            for (int i = 0; i < 10; i++)
-            {
-                ball = new Ball(rnd.Next(Map.Width), rnd.Next(Map.Height), rnd.Next(20) + 5);
-                GameWorld.Instance.AddObject(ball);
-            }
+            //Random rnd = new Random();
+            //Ball ball;
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    ball = new Ball(rnd.Next(Map.Width), rnd.Next(Map.Height), rnd.Next(20) + 5);
+            //    GameWorld.Instance.AddObject(ball);
+            //}
             #endregion
 
             #region TEMP Generating Tile instances to add to game
@@ -121,6 +133,15 @@ namespace MyGame
             Hero hero = new Hero(width * 4, height * 6, width, height * 2);
             GameWorld.Instance.AddObject(hero);
             #endregion
+
+            #region Create BG img instance
+            BGDirectory = Path.Combine(Environment.CurrentDirectory, @"tileset\bg\BG.png");
+
+            if (BGDirectory.Contains("bin\\Debug\\"))
+                BGDirectory = BGDirectory.Replace("bin\\Debug\\", string.Empty);
+
+            GameWorld.Instance.BGImage = Image.FromFile(BGDirectory);
+            #endregion
         }
 
         private void GameRender()
@@ -128,12 +149,7 @@ namespace MyGame
             using(Graphics g = Graphics.FromImage(Map))
             {
                 #region Draw Background
-                BGDirectory = Path.Combine(Environment.CurrentDirectory, @"tileset\bg\BG.png");
-
-                if (BGDirectory.Contains("bin\\Debug\\"))
-                    BGDirectory = BGDirectory.Replace("bin\\Debug\\", string.Empty);
-
-                g.DrawImage(Image.FromFile(BGDirectory), 0, 0, GameWorld.CONTAINER_WIDTH, GameWorld.CONTAINER_HEIGHT);
+                GameWorld.Instance.DrawBG(g);
                 #endregion
 
                 #region Draw Tiles
@@ -153,11 +169,26 @@ namespace MyGame
                 {
                     this.Invoke(new MethodInvoker(() =>
                     {
-                        ContainerBox.Refresh();
+                        try
+                        {
+                            ContainerBox.Refresh();
+                        }
+                        catch (ObjectDisposedException ex)
+                        {
+                            Console.WriteLine("Exception: " + ex.Message);
+                        }
 
                     }));
                 }
                 catch (ObjectDisposedException ex)
+                {
+                    Console.WriteLine("Exception: " + ex.Message);
+                }
+                catch (InvalidOperationException ex)
+                {
+                    Console.WriteLine("Exception: " + ex.Message);
+                }
+                catch (Exception ex)
                 {
                     Console.WriteLine("Exception: " + ex.Message);
                 }

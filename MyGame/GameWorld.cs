@@ -61,5 +61,11 @@ namespace MyGame
 
             _tiles[x, y] = tile;
         }
+
+        public Image BGImage { get; set; }
+        public void DrawBG(Graphics g)
+        {
+            g.DrawImage(BGImage, 0, 0, CONTAINER_WIDTH, CONTAINER_HEIGHT);
+        }
     }
 }

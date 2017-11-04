@@ -5,6 +5,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using System.Windows.Forms;
 
 namespace MyGame
 {
@@ -13,6 +15,7 @@ namespace MyGame
         public Image Image { get; set; }
         public int Width { get; set; }
         public int Height { get; set; }
+        public HeroState State { get; set; }
 
         public Hero(int x, int y, int width, int height)
         {
@@ -23,22 +26,23 @@ namespace MyGame
             Width = width;
             Height = height;
 
-            string path = Environment.CurrentDirectory;
-            if (path.Contains("\\bin\\Debug"))
-                path = path.Replace("\\bin\\Debug", string.Empty);
-
-            Image = Image.FromFile(Path.Combine(path, "heroartset\\hero_stand_left.png"));
+            //TEMP
+            State = new IdleRightState("Idle", Width, Height);
         }
 
         public override void Update()
         {
-            //throw new NotImplementedException();
+            State.Update(this);
         }
 
         public override void Draw(Graphics g)
         {
-            g.DrawImage(Image, Position.X, Position.Y, Width, Height);
-            //g.DrawRectangle(Pens.Red, Position.X , Position.Y , Width, Height);
+            State.Draw(g, Position.X, Position.Y);
+        }
+
+        public void HandleInput()
+        {
+
         }
     }
 }
