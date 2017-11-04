@@ -4,9 +4,8 @@ namespace MyGame
 {
     public class RunRightState : HeroState
     {
-        public RunRightState(string name, int heroWidth, int heroHeight) : base(name, heroWidth, heroHeight)
+        public RunRightState(string name, int heroWidth, int heroHeight) : base(name, heroWidth, heroHeight, HeroDirection.Right)
         {
-            Direction = HeroDirection.Right;
         }
 
         public override HeroState HandleInput(Hero hero)
@@ -15,7 +14,8 @@ namespace MyGame
                 return new IdleRightState("Idle", hero.Width, hero.Height);
 
             //if iskeydown left then return new RunLeftState()
-
+            if (Keyboard.IsKeyDown(Key.Left) & Keyboard.IsKeyUp(Key.Right))
+                return new RunLeftState("Run", hero.Width, hero.Height);
             return null;
         }
 

@@ -45,6 +45,7 @@ namespace MyGame
             HeroState returnedstate = State.HandleInput(this);
             if (returnedstate != null)
             {
+                //delete State;
                 State = returnedstate;
                 State.Enter(this);
             }

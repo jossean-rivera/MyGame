@@ -64,6 +64,7 @@
     <Compile Include="IdleRightState.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RunLeftState.cs" />
     <Compile Include="RunRightState.cs" />
     <Compile Include="Tiles.cs" />
     <Compile Include="TileType.cs" />
@@ -94,6 +95,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="heroartset\Left\Run__000.png" />
+    <Content Include="heroartset\Left\Run__001.png" />
+    <Content Include="heroartset\Left\Run__002.png" />
+    <Content Include="heroartset\Left\Run__003.png" />
+    <Content Include="heroartset\Left\Run__004.png" />
+    <Content Include="heroartset\Left\Run__005.png" />
+    <Content Include="heroartset\Left\Run__006.png" />
+    <Content Include="heroartset\Left\Run__007.png" />
+    <Content Include="heroartset\Left\Run__008.png" />
+    <Content Include="heroartset\Left\Run__009.png" />
     <Content Include="heroartset\Right\Glide_005.png" />
     <Content Include="heroartset\Right\Glide_006.png" />
     <Content Include="heroartset\Right\Glide_007.png" />

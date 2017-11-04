@@ -108,11 +108,11 @@ namespace MyGame
             #region TEMP Generating Tile instances to add to game
             int width = (GameWorld.CONTAINER_WIDTH + 0) / 10;
             int height = (GameWorld.CONTAINER_HEIGHT + 0) / 10;
-            GroundTile tile_Under_BottomLeftEnd = new GroundTile( width, height, TileType.Under_Ground, GroundTileType.Under_BottomLeftEnd);
+            GroundTile tile_Under_BottomLeftEnd = new GroundTile(width, height, TileType.Under_Ground, GroundTileType.Under_BottomLeftEnd);
             GameWorld.Instance.AddTile(tile_Under_BottomLeftEnd, 0, 9);
 
             GroundTile tile_Under_BottomEnd = new GroundTile(width, height, TileType.Under_Ground, GroundTileType.Under_BottomEnd);
-            for(int i = 1; i <= 8; i++)
+            for (int i = 1; i <= 8; i++)
                 GameWorld.Instance.AddTile(tile_Under_BottomEnd, i, 9);
 
             GroundTile tile_Under_BottonRightEnd = new GroundTile(width, height, TileType.Under_Ground, GroundTileType.Under_BottomRightEnd);
@@ -122,7 +122,7 @@ namespace MyGame
             GameWorld.Instance.AddTile(tile_Top_LeftEnd, 0, 8);
 
             GroundTile tile_Top_NoEnd = new GroundTile(width, height, TileType.Under_Ground, GroundTileType.Top_NoEnd);
-            for(int i = 1; i <= 8; i++)
+            for (int i = 1; i <= 8; i++)
                 GameWorld.Instance.AddTile(tile_Top_NoEnd, i, 8);
 
             GroundTile tile_Top_RightEnd = new GroundTile(width, height, TileType.Under_Ground, GroundTileType.Top_RightEnd);

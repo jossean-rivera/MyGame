@@ -11,7 +11,6 @@ namespace MyGame
         public Image CurrentImage { get; set; }
         public int ImgWidth { get; set; }
         public int ImgHeigh { get; set; }
-        public HeroDirection Direction { get; set; }
 
         private Image[] _images = new Image[10];
 
@@ -30,7 +29,7 @@ namespace MyGame
             CurrentImage = _images[FrameNum];
         }
 
-        public HeroState(string name, int heroWidth, int heroHeight)
+        public HeroState(string name, int heroWidth, int heroHeight, HeroDirection direction)
         {
             Name = name;
             FrameNum = 9;
@@ -42,12 +41,13 @@ namespace MyGame
             if (ProjectDir.Contains("\\bin\\Debug"))
                 ProjectDir = ProjectDir.Replace("\\bin\\Debug", string.Empty);
 
+            
             //Set up the images
             string FileName;
             for (int i = 0; i < 10; i++)
             {
                 FileName = Name + "__" + "00" + i.ToString() + ".png";
-                _images[i] = Image.FromFile(Path.Combine(ProjectDir, "heroartset", Direction.ToString(), FileName));
+                _images[i] = Image.FromFile(Path.Combine(ProjectDir, "heroartset", direction.ToString(), FileName));
             }
         }
 
