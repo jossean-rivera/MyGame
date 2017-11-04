@@ -59,6 +59,7 @@
             this.Controls.Add(this.btnStartStop);
             this.Controls.Add(this.ContainerBox);
             this.Name = "GameForm";
+            this.Load += new System.EventHandler(this.GameForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ContainerBox)).EndInit();
             this.ResumeLayout(false);
 
