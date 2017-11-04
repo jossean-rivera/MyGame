@@ -76,6 +76,7 @@ namespace MyGame
             {
                 start = GetCurrentTime();
                 elapsed = start - lasttick;
+                lasttick = start;
 
                 hero.HandleInput();
                 GameWorld.Instance.Update(elapsed);
