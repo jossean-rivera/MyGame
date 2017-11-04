@@ -14,15 +14,15 @@ namespace MyGame
         public override HeroState HandleInput(Hero hero)
         {
             if (Keyboard.IsKeyDown(Key.Right))
-                return new RunRightState("Run", hero.Width, hero.Height);
+                return new RunRightState(hero);
 
             if (Keyboard.IsKeyDown(Key.Left))
-                return new RunLeftState("Run", hero.Width, hero.Height);
+                return new RunLeftState(hero);
 
             return null;
         }
 
-        public IdleRightState(string name, int heroWidth, int heroHeight) : base(name, heroWidth, heroHeight, HeroDirection.Right)
+        public IdleRightState(Hero hero) : base("Idle", hero.Width, hero.Height, HeroDirection.Right)
         {
 
         }

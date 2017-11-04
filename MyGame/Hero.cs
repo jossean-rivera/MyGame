@@ -27,7 +27,7 @@ namespace MyGame
             Height = height;
 
             //TEMP
-            State = new IdleRightState("Idle", Width, Height);
+            State = new IdleRightState(this);
         }
 
         public override void Update()
@@ -46,6 +46,7 @@ namespace MyGame
             if (returnedstate != null)
             {
                 //delete State;
+                GC.Collect();
                 State = returnedstate;
                 State.Enter(this);
             }

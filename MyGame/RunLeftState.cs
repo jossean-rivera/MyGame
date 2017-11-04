@@ -9,11 +9,11 @@ namespace MyGame
 {
     public class RunLeftState : HeroState
     {
-        public override HeroState HandleInput(Hero h)
+        public override HeroState HandleInput(Hero hero)
         {
             if (Keyboard.IsKeyUp(Key.Left))
                 //TEMP
-                return new IdleRightState("Idle", h.Width, h.Height);
+                return new IdleLeftState(hero);
 
             return null;
         }
@@ -24,7 +24,7 @@ namespace MyGame
             hero.Position.X -= 5;
         }
 
-        public RunLeftState(string name, int heroWidth, int heroHeight) : base(name, heroWidth, heroHeight, HeroDirection.Left)
+        public RunLeftState(Hero hero) : base("Run", hero.Width, hero.Height, HeroDirection.Left)
         { 
 
         }
