@@ -12,7 +12,7 @@ namespace MyGame
     {
         private Key _input;
         private Hero _hero;
-        private const int vely = 10;
+        private const int vely = 5;
         private const int velx = 5;
         public override HeroState HandleInput(Hero h)
         {
@@ -36,26 +36,31 @@ namespace MyGame
             else if (_input == Key.Left)
                 hero.Position.X -= velx;
 
-            if(FrameNum < 5)
+            if(ImgNum < 5)
             {
                 //Go up
                 hero.Position.Y -= vely;
             }
-            else if (FrameNum <= 9)
+            else if (ImgNum <= 9)
             {
                 hero.Position.Y += vely;
-                if (FrameNum == 9) _hero = hero;
+                if (ImgNum == 9 & _delaycounter == ImgDelay) _hero = hero;
             }
         }
 
         public override void Draw(Graphics g, int x, int y)
         {
             base.Draw(g, x, y);
-            if(FrameNum >= 9)
+            if(ImgNum >= 9 & _delaycounter == ImgDelay)
             {
                 _hero.State = new RunState(_hero, this.Direction);
                 _hero.State.Enter(_hero);
             }
+        }
+
+        public override void Enter(Hero hero)
+        {
+            ImgNum = 0;
         }
 
         public JumpState(Hero h, HeroDirection d) : base("Jump", h.Width, h.Height, d)

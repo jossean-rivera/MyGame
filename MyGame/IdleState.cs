@@ -24,12 +24,6 @@ namespace MyGame
             return null;
         }
 
-        public override void Draw(Graphics g, int x, int y)
-        {
-            base.Draw(g, x, y);
-            //g.DrawRectangle(Pens.Red, x, y, ImgWidth, ImgHeigh);
-        }
-
         public IdleState(Hero h, HeroDirection d) : base("Idle", h.Width, h.Height, d)
         {
             

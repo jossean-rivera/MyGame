@@ -26,7 +26,7 @@ namespace MyGame
             Width = width;
             Height = height;
 
-            //TEMP
+            //First state is the Idle to the Right
             State = new IdleState(this, HeroDirection.Right);
         }
 
