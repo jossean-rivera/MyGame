@@ -1,7 +1,5 @@
 ﻿using System;
-using System.IO;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,22 +7,22 @@ using System.Windows.Input;
 
 namespace MyGame
 {
-    public class IdleRightState : HeroState
+    public class IdleState : HeroState
     {
-        public override HeroState HandleInput(Hero hero)
+        public override HeroState HandleInput(Hero h)
         {
             if (Keyboard.IsKeyDown(Key.Right))
-                return new RunRightState(hero);
+                return new RunState(h, HeroDirection.Right);
 
             if (Keyboard.IsKeyDown(Key.Left))
-                return new RunLeftState(hero);
+                return new RunState(h, HeroDirection.Left);
 
             return null;
         }
 
-        public IdleRightState(Hero hero) : base("Idle", hero.Width, hero.Height, HeroDirection.Right)
+        public IdleState(Hero h, HeroDirection d) : base("Idle", h.Width, h.Height, d)
         {
-
+            
         }
     }
 }

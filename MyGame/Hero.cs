@@ -27,7 +27,7 @@ namespace MyGame
             Height = height;
 
             //TEMP
-            State = new IdleRightState(this);
+            State = new IdleState(this, HeroDirection.Right);
         }
 
         public override void Update()

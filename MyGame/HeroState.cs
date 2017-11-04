@@ -11,6 +11,7 @@ namespace MyGame
         public Image CurrentImage { get; set; }
         public int ImgWidth { get; set; }
         public int ImgHeigh { get; set; }
+        public HeroDirection Direction { get; set; }
 
         private Image[] _images = new Image[10];
 
@@ -35,6 +36,7 @@ namespace MyGame
             FrameNum = 9;
             ImgWidth = heroWidth;
             ImgHeigh = heroHeight;
+            Direction = direction;
 
             string ProjectDir;
             ProjectDir = Environment.CurrentDirectory;
