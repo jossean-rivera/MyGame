@@ -9,13 +9,14 @@ namespace MyGame
         #region Properties
         public string Name { get; set; }
         protected int ImgNum { get; set; }
+        protected const int ImgsCount = 10; //How many images for each state are in the hero art set folder.
         public Image CurrentImage { get; set; }
         public int ImgWidth { get; set; }
         public int ImgHeigh { get; set; }
         protected int _delaycounter;
         protected int _framecount;
         public HeroDirection Direction { get; set; }
-        private Image[] _images = new Image[10];
+        private Image[] _images = new Image[ImgsCount];
 
         //How many frames until we move to the next img.
         public int ImgDelay { get; set; }
@@ -41,7 +42,7 @@ namespace MyGame
         /// <param name="hero">The hero instance.</param>
         public virtual void Update(Hero hero)
         {
-            //Every state should have a total of 20 frames
+            //Every state should have a total of (ImgDelay + 1) * 10 frames
             _framecount++;
             if (_delaycounter >= ImgDelay)
             {
@@ -74,7 +75,7 @@ namespace MyGame
         public HeroState(string name, int heroWidth, int heroHeight, HeroDirection direction)
         {
             Name = name;
-            ImgDelay = 1;
+            ImgDelay = 2;
             ImgWidth = heroWidth;
             ImgHeigh = heroHeight;
             Direction = direction;
@@ -87,7 +88,7 @@ namespace MyGame
             
             //Set up the images
             string FileName;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < ImgsCount; i++)
             {
                 FileName = Name + "__" + "00" + i.ToString() + ".png";
                 _images[i] = Image.FromFile(Path.Combine(ProjectDir, "heroartset", direction.ToString(), FileName));
