@@ -31,10 +31,10 @@ namespace MyGame
             _objects.Add(NewObj);
         }
 
-        public void Update()
+        public void Update(double elapsed)
         {
             foreach (GameObject obj in _objects)
-                obj.Update();
+                obj.Update(elapsed);
         }
 
         //public const int CONTAINER_WIDTH = 259 + 1;

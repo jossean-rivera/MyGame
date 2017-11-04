@@ -27,9 +27,9 @@ namespace MyGame
             return null;
         }
 
-        public override void Update(Hero hero)
+        public override void Update(Hero hero, double elapsed)
         {
-            base.Update(hero);
+            base.Update(hero, elapsed);
 
             if (_input == Key.Right)
                 hero.Position.X += velx;

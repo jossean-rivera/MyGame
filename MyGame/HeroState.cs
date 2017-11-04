@@ -20,7 +20,7 @@ namespace MyGame
             g.DrawImage(CurrentImage, x, y, ImgWidth, ImgHeigh);
         }
 
-        public virtual void Update(Hero hero)
+        public virtual void Update(Hero hero, double elapsed)
         {
             if (FrameNum >= 9)
                 FrameNum = 0;
