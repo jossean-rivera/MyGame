@@ -42,7 +42,12 @@ namespace MyGame
 
         public void HandleInput()
         {
-
+            HeroState returnedstate = State.HandleInput(this);
+            if (returnedstate != null)
+            {
+                State = returnedstate;
+                State.Enter(this);
+            }
         }
     }
 }

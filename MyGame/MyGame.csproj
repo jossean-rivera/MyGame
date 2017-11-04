@@ -61,9 +61,10 @@
     <Compile Include="Hero.cs" />
     <Compile Include="HeroDirection.cs" />
     <Compile Include="HeroState.cs" />
-    <Compile Include="IdleState.cs" />
+    <Compile Include="IdleRightState.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RunRightState.cs" />
     <Compile Include="Tiles.cs" />
     <Compile Include="TileType.cs" />
     <Compile Include="Vector.cs" />

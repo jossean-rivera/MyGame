@@ -11,27 +11,16 @@ namespace MyGame
 {
     public class IdleRightState : HeroState
     {
-        public override void Draw(Graphics g, int x, int y)
-        {
-            base.Draw(g, x, y);
-        }
-
-        public override void Update(Hero hero)
-        {
-            base.Update(hero);
-        }
-
-        public override HeroState HandleInput()
+        public override HeroState HandleInput(Hero hero)
         {
             if (Keyboard.IsKeyDown(Key.Right))
-                return null; //return RunRightState;
+                return new RunRightState("Run", hero.Width, hero.Height);
 
             return null;
         }
 
         public IdleRightState(string name, int heroWidth, int heroHeight) : base(name, heroWidth, heroHeight)
         {
-            Name = "Idle";
             Direction = HeroDirection.Right;
         }
     }

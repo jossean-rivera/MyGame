@@ -51,11 +51,11 @@ namespace MyGame
             }
         }
 
-        public void Enter(Hero hero)
+        public virtual void Enter(Hero hero)
         {
             FrameNum = 9;
         }
 
-        public abstract HeroState HandleInput();
+        public abstract HeroState HandleInput(Hero h);
     }
 }
