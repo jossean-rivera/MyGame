@@ -16,7 +16,7 @@ namespace MyGame
     {
         private bool GameOver;
         private Bitmap Map;
-        private const double MS_PER_FRAME = 1000 / 30;
+        private const double MS_PER_FRAME = 1000 / 60;
         private string BGDirectory;
 
         public GameForm()
