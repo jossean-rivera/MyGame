@@ -40,7 +40,7 @@ namespace MyGame
         /// Logic that the hero will be doing in the state. The function process the CurrentImage assigning it to the corresponding image.
         /// </summary>
         /// <param name="hero">The hero instance.</param>
-        public virtual void Update(Hero hero)
+        public virtual void Update(Hero hero, double elapsed)
         {
             //Every state should have a total of (ImgDelay + 1) * 10 frames
             _framecount++;

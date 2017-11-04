@@ -30,9 +30,9 @@ namespace MyGame
             State = new IdleState(this, HeroDirection.Right);
         }
 
-        public override void Update()
+        public override void Update(double elapsed)
         {
-            State.Update(this);
+            State.Update(this, elapsed);
         }
 
         public override void Draw(Graphics g)

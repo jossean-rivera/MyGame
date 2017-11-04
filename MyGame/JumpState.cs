@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 using System.Windows.Input;
 
 namespace MyGame
@@ -12,10 +7,9 @@ namespace MyGame
     {
         private Key _input;
         private Hero _hero; //We need the hero instance to be able to be at the draw method
-        private const int vely = 10;
-        private const int velx = 7;
-        private int _frametotal; //How many frames should the JumpState have.
-
+        private const int vely = 10; //VelocityY = 10 pixels / 1 Frame
+        private const double velx = 0.3; //VelocityX = 0.3 pixels / 1ms
+        private int _frametotal;
         public override HeroState HandleInput(Hero h)
         {
             if (Keyboard.IsKeyDown(Key.Right))
@@ -29,14 +23,14 @@ namespace MyGame
             return null;
         }
 
-        public override void Update(Hero hero)
+        public override void Update(Hero hero, double elapsed)
         {
-            base.Update(hero);
+            base.Update(hero, elapsed);
 
             if (_input == Key.Right)
-                hero.Position.X += velx;
+                hero.Position.X += (int)(velx * elapsed);
             else if (_input == Key.Left)
-                hero.Position.X -= velx;
+                hero.Position.X -= (int)(velx * elapsed);
 
             if(_framecount <= _frametotal / 2)
             {

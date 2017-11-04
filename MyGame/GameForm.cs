@@ -64,18 +64,22 @@ namespace MyGame
         {
             InitializeGame();
             double start;
+            double lasttick = GetCurrentTime();
+            double elapsed;
             int wait;
             var query = from GameObject obj in GameWorld.Instance.Objects where obj.GetType().Name == "Hero" select obj;
             Hero hero = null;
             if (query != null)
                 hero = query.First() as Hero;
-
+            
             while (!GameOver)
             {
                 start = GetCurrentTime();
-                //processInput();
+                elapsed = start - lasttick;
+                lasttick = start;
+
                 hero.HandleInput();
-                GameWorld.Instance.Update();
+                GameWorld.Instance.Update(elapsed);
                 GameRender();
 
                 wait = (int)(start + MS_PER_FRAME - GetCurrentTime());

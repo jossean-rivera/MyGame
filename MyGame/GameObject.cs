@@ -11,7 +11,7 @@ namespace MyGame
     {
         public Vector Position { get; set; }
         public Vector Velocity { get; set; }
-        public abstract void Update();
+        public abstract void Update(double elapsed);
         public abstract void Draw(Graphics g);
         public GameObject()
         {

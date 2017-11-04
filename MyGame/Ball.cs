@@ -33,7 +33,7 @@ namespace MyGame
             g.DrawEllipse(Pens.Black, Position.X, Position.Y, Diameter, Diameter);
         }
 
-        public override void Update()
+        public override void Update(double elapsed)
         {
             if (Position.X + Diameter > GameWorld.CONTAINER_WIDTH & Velocity.X > 0 | Position.X < 0 & Velocity.X < 0)
                 Velocity.X *= -1;
