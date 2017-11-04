@@ -88,7 +88,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="heroartset\hero_stand_left.png" />
     <Content Include="tileset\bg\BG.png" />
     <Content Include="tileset\objects\Bush %281%29.png" />
     <Content Include="tileset\objects\Bush %282%29.png" />
@@ -121,6 +120,9 @@
     <Content Include="tileset\tiles\7.png" />
     <Content Include="tileset\tiles\8.png" />
     <Content Include="tileset\tiles\9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="heroartset\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
