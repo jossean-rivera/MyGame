@@ -18,6 +18,9 @@ namespace MyGame
         {
             velx = x_vel;
             vely = y_vel;
+
+            if (direction == HeroDirection.Left)
+                velx *= -1;
         }
 
         public override void Update(Hero hero, double elapsed)
