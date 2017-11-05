@@ -34,12 +34,12 @@ namespace MyGame
 
         #region Fields
         //Set the Width and Height of the container in this constants
-        public const int CONTAINER_WIDTH = 500;
-        public const int CONTAINER_HEIGHT = 400;
+        public const int CONTAINER_WIDTH = 600;
+        public const int CONTAINER_HEIGHT = 480;
         
         //Set the amount of the tiles
-        public const int TILES_AMOUNT_X = 10;
-        public const int TILES_AMOUNT_Y = 10;
+        public const int TILES_AMOUNT_X = 15;
+        public const int TILES_AMOUNT_Y = 15;
         public const int TILES_WIDTH = CONTAINER_WIDTH / TILES_AMOUNT_X;
         public const int TILES_HEIGHT = CONTAINER_HEIGHT / TILES_AMOUNT_Y;
 
@@ -226,33 +226,33 @@ namespace MyGame
         {
             #region TEMP Generating Tile instances to add to game
             GroundTile tile_Under_BottomLeftEnd = new GroundTile(TILES_WIDTH, TILES_HEIGHT, TileType.Under_Ground, GroundTileType.Under_BottomLeftEnd);
-            AddTile(tile_Under_BottomLeftEnd, 0, 9);
+            AddTile(tile_Under_BottomLeftEnd, 0, TILES_AMOUNT_Y - 1);
 
             GroundTile tile_Under_BottomEnd = new GroundTile(TILES_WIDTH, TILES_HEIGHT, TileType.Under_Ground, GroundTileType.Under_BottomEnd);
-            for (int i = 1; i <= 8; i++)
-                AddTile(tile_Under_BottomEnd, i, 9);
+            for (int i = 1; i <= TILES_AMOUNT_X - 2; i++)
+                AddTile(tile_Under_BottomEnd, i, TILES_AMOUNT_Y - 1);
 
             GroundTile tile_Under_BottonRightEnd = new GroundTile(TILES_WIDTH, TILES_HEIGHT, TileType.Under_Ground, GroundTileType.Under_BottomRightEnd);
-            AddTile(tile_Under_BottonRightEnd, 9, 9);
+            AddTile(tile_Under_BottonRightEnd, TILES_AMOUNT_X - 1, TILES_AMOUNT_Y -1);
 
             GroundTile tile_Top_LeftEnd = new GroundTile(TILES_WIDTH, TILES_HEIGHT, TileType.Under_Ground, GroundTileType.Top_LeftEnd);
-            AddTile(tile_Top_LeftEnd, 0, 8);
+            AddTile(tile_Top_LeftEnd, 0, TILES_AMOUNT_Y - 2);
 
             GroundTile tile_Top_NoEnd = new GroundTile(TILES_WIDTH, TILES_HEIGHT, TileType.Under_Ground, GroundTileType.Top_NoEnd);
-            for (int i = 1; i <= 8; i++)
-                AddTile(tile_Top_NoEnd, i, 8);
+            for (int i = 1; i <= TILES_AMOUNT_X - 2; i++)
+                AddTile(tile_Top_NoEnd, i, TILES_AMOUNT_Y - 2);
 
             GroundTile tile_Top_RightEnd = new GroundTile(TILES_WIDTH, TILES_HEIGHT, TileType.Under_Ground, GroundTileType.Top_RightEnd);
-            AddTile(tile_Top_RightEnd, 9, 8);
+            AddTile(tile_Top_RightEnd, TILES_AMOUNT_X - 1, TILES_AMOUNT_Y - 2);
             #endregion
 
             #region Generating Hero instance
-            Hero hero = new Hero(TILES_WIDTH * (TILES_AMOUNT_X / 2 - 1), TILES_HEIGHT * (TILES_AMOUNT_Y / 2 + 1), TILES_WIDTH, TILES_HEIGHT * 2);
+            Hero hero = new Hero(TILES_WIDTH * (TILES_AMOUNT_X / 2 - 1), TILES_HEIGHT * (TILES_AMOUNT_Y - 4), TILES_WIDTH, TILES_HEIGHT * 2);
             AddHero(hero);
             #endregion
 
             #region Create BG img instance
-            string BGDirectory = Path.Combine(Environment.CurrentDirectory, @"tileset\bg\BG.png");
+            string BGDirectory = Path.Combine(Environment.CurrentDirectory, @"tileset (night)\bg\BG.png");
 
             if (BGDirectory.Contains("bin\\Debug\\"))
                 BGDirectory = BGDirectory.Replace("bin\\Debug\\", string.Empty);

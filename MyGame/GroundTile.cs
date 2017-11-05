@@ -19,7 +19,7 @@ namespace MyGame
             if (path.Contains("\\bin\\Debug"))
                 path = path.Replace("\\bin\\Debug", string.Empty);
 
-            path = Path.Combine(path, "tileset\\tiles\\" + (int)groundtype + ".png");
+            path = Path.Combine(path, "tileset (night)\\tiles\\" + (int)groundtype + ".png");
             Image = Image.FromFile(path);
         }
     }
