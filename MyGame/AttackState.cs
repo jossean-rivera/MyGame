@@ -1,4 +1,7 @@
 ﻿
+using System.Drawing;
+using System.Windows.Input;
+
 namespace MyGame
 {
     public class AttackState : HeroState
@@ -9,7 +12,15 @@ namespace MyGame
         public override HeroState HandleInput(Hero h)
         {
             if (_framecount == _frametotal)
-                return new RunState(h, Direction);
+            {
+                if (Direction == HeroDirection.Left)
+                    h.Position.X += GameWorld.TILES_WIDTH * 1 / 2;
+
+                if (Keyboard.IsKeyDown(Key.Right) | Keyboard.IsKeyDown(Key.Left))
+                    return new RunState(h, Direction);
+                else
+                    return new IdleState(h, Direction);
+            }
 
             return null;
         }
@@ -32,6 +43,11 @@ namespace MyGame
                 hero.Position.Y -= vely;
             else
                 hero.Position.Y += vely;
+        }
+
+        public override void Draw(Graphics g, int x, int y)
+        {
+            base.Draw(g, x, y + GameWorld.TILES_HEIGHT * 1/10);
         }
     }
 }

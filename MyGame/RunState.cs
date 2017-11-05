@@ -35,7 +35,7 @@ namespace MyGame
             if (Keyboard.IsKeyDown(Key.A))
                 return new JumpState(h, this.Direction);
             else if (Keyboard.IsKeyDown(Key.S))
-                return new AttackState(h, this.Direction, 0.3);
+                return new AttackState(h, this.Direction, vel);
 
             return null;
         }
