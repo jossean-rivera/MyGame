@@ -91,7 +91,7 @@ namespace MyGame
             for (int i = 0; i < ImgsCount; i++)
             {
                 FileName = Name + "__" + "00" + i.ToString() + ".png";
-                _images[i] = Image.FromFile(Path.Combine(ProjectDir, "heroartset", direction.ToString(), FileName));
+                _images[i] = Image.FromFile(Path.Combine(ProjectDir, "heroartset (girl)", direction.ToString(), FileName));
             }
 
             //Assign the first one to the current img
