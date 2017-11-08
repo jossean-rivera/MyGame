@@ -224,26 +224,20 @@ namespace MyGame
         /// </summary>
         public virtual void InitializeGame()
         {
-            #region TEMP Generating Tile instances to add to game
-            GroundTile tile_Under_BottomLeftEnd = new GroundTile(TILES_WIDTH, TILES_HEIGHT, TileType.Under_Ground, GroundTileType.Under_BottomLeftEnd);
-            AddTile(tile_Under_BottomLeftEnd, 0, TILES_AMOUNT_Y - 1);
+            #region TEMP Adding tiles to the game
+            AddTile(TileInstances.GroundTile_Under_BottomLeftEnd, 0, TILES_AMOUNT_Y - 1);
 
-            GroundTile tile_Under_BottomEnd = new GroundTile(TILES_WIDTH, TILES_HEIGHT, TileType.Under_Ground, GroundTileType.Under_BottomEnd);
             for (int i = 1; i <= TILES_AMOUNT_X - 2; i++)
-                AddTile(tile_Under_BottomEnd, i, TILES_AMOUNT_Y - 1);
+                AddTile(Tile.GroundTile_Under_BottomEnd, i, TILES_AMOUNT_Y - 1);
 
-            GroundTile tile_Under_BottonRightEnd = new GroundTile(TILES_WIDTH, TILES_HEIGHT, TileType.Under_Ground, GroundTileType.Under_BottomRightEnd);
-            AddTile(tile_Under_BottonRightEnd, TILES_AMOUNT_X - 1, TILES_AMOUNT_Y -1);
+            AddTile(Tile.GroundTile_Under_BottonRightEnd, TILES_AMOUNT_X - 1, TILES_AMOUNT_Y -1);
 
-            GroundTile tile_Top_LeftEnd = new GroundTile(TILES_WIDTH, TILES_HEIGHT, TileType.Under_Ground, GroundTileType.Top_LeftEnd);
-            AddTile(tile_Top_LeftEnd, 0, TILES_AMOUNT_Y - 2);
+            AddTile(Tile.GroundTile_Top_LeftEnd, 0, TILES_AMOUNT_Y - 2);
 
-            GroundTile tile_Top_NoEnd = new GroundTile(TILES_WIDTH, TILES_HEIGHT, TileType.Under_Ground, GroundTileType.Top_NoEnd);
             for (int i = 1; i <= TILES_AMOUNT_X - 2; i++)
-                AddTile(tile_Top_NoEnd, i, TILES_AMOUNT_Y - 2);
+                AddTile(Tile.GroundTile_Top_NoEnd, i, TILES_AMOUNT_Y - 2);
 
-            GroundTile tile_Top_RightEnd = new GroundTile(TILES_WIDTH, TILES_HEIGHT, TileType.Under_Ground, GroundTileType.Top_RightEnd);
-            AddTile(tile_Top_RightEnd, TILES_AMOUNT_X - 1, TILES_AMOUNT_Y - 2);
+            AddTile(Tile.GroundTile_Top_RightEnd, TILES_AMOUNT_X - 1, TILES_AMOUNT_Y - 2);
             #endregion
 
             #region Generating Hero instance

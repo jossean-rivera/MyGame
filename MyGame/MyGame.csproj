@@ -67,7 +67,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RunState.cs" />
-    <Compile Include="Tiles.cs" />
+    <Compile Include="Tile.cs" />
+    <Compile Include="TileInstances.cs" />
     <Compile Include="TileType.cs" />
     <Compile Include="Vector.cs" />
     <EmbeddedResource Include="GameForm.resx">
