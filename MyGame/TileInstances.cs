@@ -76,6 +76,90 @@
             }
         }
 
+
+
+
+        private static Tile _GroundTile_Under_LeftEnd;
+        public static Tile GroundTile_Under_LeftEnd
+        {
+            get
+            {
+                if (_GroundTile_Under_LeftEnd == null) _GroundTile_Under_LeftEnd = new GroundTile(GameWorld.TILES_WIDTH, GameWorld.TILES_HEIGHT, TileType.Under_Ground, GroundTileType.Under_LeftEnd);
+                return _GroundTile_Under_LeftEnd;
+            }
+        }
+
+
+
+        private static Tile _GroundTile_Under_NoEnd1;
+        public static Tile GroundTile_Under_NoEnd1
+        {
+            get
+            {
+                if (_GroundTile_Under_NoEnd1 == null) _GroundTile_Under_NoEnd1 = new GroundTile(GameWorld.TILES_WIDTH, GameWorld.TILES_HEIGHT, TileType.Under_Ground, GroundTileType.Under_NoEnd1);
+                return _GroundTile_Under_NoEnd1;
+            }
+        }
+
+
+        private static Tile _GroundTile_Under_NoEnd2;
+        public static Tile GroundTile_Under_NoEnd2
+        {
+            get
+            {
+                if (_GroundTile_Under_NoEnd2 == null) _GroundTile_Under_NoEnd2 = new GroundTile(GameWorld.TILES_WIDTH, GameWorld.TILES_HEIGHT, TileType.Under_Ground, GroundTileType.Under_NoEnd2);
+                return _GroundTile_Under_NoEnd2;
+            }
+        }
+
+
+        private static Tile _GroundTile_Under_NoEnd3;
+        public static Tile GroundTile_Under_NoEnd3
+        {
+            get
+            {
+                if (_GroundTile_Under_NoEnd3 == null) _GroundTile_Under_NoEnd3 = new GroundTile(GameWorld.TILES_WIDTH, GameWorld.TILES_HEIGHT, TileType.Under_Ground, GroundTileType.Under_NoEnd3);
+                return _GroundTile_Under_NoEnd3;
+            }
+        }
+
+
+        private static Tile _GroundTile_Under_RightEnd;
+        public static Tile GroundTile_Under_RightEnd
+        {
+            get
+            {
+                if (_GroundTile_Under_RightEnd == null) _GroundTile_Under_RightEnd = new GroundTile(GameWorld.TILES_WIDTH, GameWorld.TILES_HEIGHT, TileType.Under_Ground, GroundTileType.Under_RightEnd);
+                return _GroundTile_Under_RightEnd;
+            }
+        }
+
+
+
+        private static Tile _GroundTile_Top_CurvedRight;
+        public static Tile GroundTile_Top_CurvedRight
+        {
+            get
+            {
+                if (_GroundTile_Top_CurvedRight == null) _GroundTile_Top_CurvedRight = new GroundTile(GameWorld.TILES_WIDTH, GameWorld.TILES_HEIGHT, TileType.Under_Ground, GroundTileType.Top_CurvedRight);
+                return _GroundTile_Top_CurvedRight;
+            }
+        }
+
+
+
+        private static Tile _GroundTile_Top_CurvedLeft;
+        public static Tile GroundTile_Top_CurvedLeft
+        {
+            get
+            {
+                if (_GroundTile_Top_CurvedLeft == null) _GroundTile_Top_CurvedLeft = new GroundTile(GameWorld.TILES_WIDTH, GameWorld.TILES_HEIGHT, TileType.Under_Ground, GroundTileType.Top_CurvedLeft);
+                return _GroundTile_Top_CurvedLeft;
+            }
+        }
+
+
+
         #endregion
     }
 }
