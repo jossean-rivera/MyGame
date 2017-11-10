@@ -228,16 +228,16 @@ namespace MyGame
             AddTile(TileInstances.GroundTile_Under_BottomLeftEnd, 0, TILES_AMOUNT_Y - 1);
 
             for (int i = 1; i <= TILES_AMOUNT_X - 2; i++)
-                AddTile(Tile.GroundTile_Under_BottomEnd, i, TILES_AMOUNT_Y - 1);
+                AddTile(TileInstances.GroundTile_Under_BottomEnd, i, TILES_AMOUNT_Y - 1);
 
-            AddTile(Tile.GroundTile_Under_BottonRightEnd, TILES_AMOUNT_X - 1, TILES_AMOUNT_Y -1);
+            AddTile(TileInstances.GroundTile_Under_BottonRightEnd, TILES_AMOUNT_X - 1, TILES_AMOUNT_Y -1);
 
-            AddTile(Tile.GroundTile_Top_LeftEnd, 0, TILES_AMOUNT_Y - 2);
+            AddTile(TileInstances.GroundTile_Top_LeftEnd, 0, TILES_AMOUNT_Y - 2);
 
             for (int i = 1; i <= TILES_AMOUNT_X - 2; i++)
-                AddTile(Tile.GroundTile_Top_NoEnd, i, TILES_AMOUNT_Y - 2);
+                AddTile(TileInstances.GroundTile_Top_NoEnd, i, TILES_AMOUNT_Y - 2);
 
-            AddTile(Tile.GroundTile_Top_RightEnd, TILES_AMOUNT_X - 1, TILES_AMOUNT_Y - 2);
+            AddTile(TileInstances.GroundTile_Top_RightEnd, TILES_AMOUNT_X - 1, TILES_AMOUNT_Y - 2);
             #endregion
 
             #region Generating Hero instance
