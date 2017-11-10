@@ -6,7 +6,7 @@ namespace MyGame
     public class RunState : HeroState
     {
         //TEMP field
-        private const double vel = 0.3; //Velocity = 0.2 pixel / 1 ms
+        private const double vel = 0.25; //Velocity = 0.2 pixel / 1 ms
         private const int _borderError = 55; //55 pixels
         public override HeroState HandleInput(Hero h)
         {
@@ -66,7 +66,7 @@ namespace MyGame
 
         public override void Draw(Graphics g, int x, int y)
         {
-            base.Draw(g, x, y + GameWorld.TILES_AMOUNT_Y * 1/3);
+            base.Draw(g, x, y + GameWorld.TILES_AMOUNT_Y / 4);
         }
 
         public RunState(Hero h, HeroDirection d) : base("Run", h.Width + GameWorld.TILES_WIDTH * 1/3, h.Height, d)
