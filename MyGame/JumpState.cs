@@ -6,7 +6,6 @@ namespace MyGame
     public class JumpState : HeroState
     {
         private Key _input;
-        private Hero _hero; //We need the hero instance to be able to be at the draw method
         private const int vely = 10; //VelocityY = 10 pixels / 1 Frame
         private const double velx = 0.3; //VelocityX = 0.3 pixels / 1ms
 
@@ -46,25 +45,7 @@ namespace MyGame
             {
                 //Go down
                 hero.Position.Y += vely;
-                //if (_framecount == _frametotal & _delaycounter == ImgDelay)
-                //    _hero = hero;
             }
-        }
-
-        public override void Draw(Graphics g, int x, int y)
-        {
-            base.Draw(g, x, y);
-            //if(_hero != null)
-            //{
-            //    _hero.State = new RunState(_hero, this.Direction);
-            //    _hero.State.Enter(_hero);
-            //}
-        }
-
-        public override void Enter(Hero hero)
-        {
-            base.Enter(hero);
-            //_hero = null;
         }
 
         public JumpState(Hero h, HeroDirection d) : base("Jump", h.Width + GameWorld.TILES_WIDTH * 1/3, h.Height + GameWorld.TILES_HEIGHT * 1 / 8, d)
