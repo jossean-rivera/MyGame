@@ -15,7 +15,7 @@ namespace MyGame
         public int ImgHeigh { get; set; }
         protected int _delaycounter;
         protected int _framecount;
-        protected int _frametotal = (ImgDelay + 1) * ImgsCount;
+        protected int _frametotal = ImgDelay * ImgsCount;
         public HeroDirection Direction { get; set; }
         private Image[] _images = new Image[ImgsCount];
 
