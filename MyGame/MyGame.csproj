@@ -62,6 +62,7 @@
     <Compile Include="Hero.cs" />
     <Compile Include="HeroDirection.cs" />
     <Compile Include="HeroState.cs" />
+    <Compile Include="HeroStateInstances.cs" />
     <Compile Include="IdleState.cs" />
     <Compile Include="JumpState.cs" />
     <Compile Include="Program.cs" />

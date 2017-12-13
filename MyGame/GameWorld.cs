@@ -59,7 +59,12 @@ namespace MyGame
         #region Properties
         public List<GameObject> Objects { get { return _objects; } }
         public Tile[,] Tiles {  get { return _tiles; }   }
-        private Hero HeroInstance { get { return _hero; } }
+
+        /// <summary>
+        /// Instance of the Hero that it's inside the Game World. 
+        /// There can only be one hero in the world.
+        /// </summary>
+        public Hero HeroInstance { get { return _hero; } }
 
         /// <summary>
         /// This method is called at the end of the Game Loop and it has to be defined by in the main UI thread

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 
 namespace MyGame
 {
@@ -13,15 +7,15 @@ namespace MyGame
         public override HeroState HandleInput(Hero h)
         {
             if (Keyboard.IsKeyDown(Key.Right))
-                return new RunState(h, HeroDirection.Right);
+                return HeroStateInstances.GetRunState(h, HeroDirection.Right);
 
             else if (Keyboard.IsKeyDown(Key.Left))
-                return new RunState(h, HeroDirection.Left);
+                return HeroStateInstances.GetRunState(h, HeroDirection.Left);
 
             else if (Keyboard.IsKeyDown(Key.A))
-                return new JumpState(h, this.Direction);
+                return HeroStateInstances.GetJumpState(h, this.Direction);
             else if (Keyboard.IsKeyDown(Key.S))
-                return new AttackState(h, this.Direction);
+                return HeroStateInstances.GetAttackState(h, this.Direction);
 
 
             return null;
